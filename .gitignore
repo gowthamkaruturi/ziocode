@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea
+.metals
+.bsp
+.vscode
+.bloop
+project/.bloop
+project/project
+project/target
+target/
