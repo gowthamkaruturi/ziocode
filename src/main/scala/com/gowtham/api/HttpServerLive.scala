@@ -19,7 +19,7 @@ import sttp.tapir.swagger.SwaggerUI
 
 
 
-class HttpServerLive(customerService: CustomerService) extends HttpServer{
+case class HttpServerLive(customerService: CustomerService) extends HttpServer{
 
   private val customerBaseEndpoint = endpoint.in("api").in("v1").in("customers")
   private val getCustomerErrorOut = oneOf[CustomerError](

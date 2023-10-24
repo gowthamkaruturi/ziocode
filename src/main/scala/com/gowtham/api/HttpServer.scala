@@ -18,7 +18,7 @@ object HttpServer {
   lazy val live: ZLayer[CustomerService, Nothing, HttpServer] = ZLayer {
     for {
       customerService <- ZIO.service[CustomerService]
-    } yield new HttpServerLive(customerService)
+    } yield  HttpServerLive(customerService)
   }
 
   def httpRoutes: ZIO[HttpServer, Nothing, HttpApp[Any, Throwable]] =

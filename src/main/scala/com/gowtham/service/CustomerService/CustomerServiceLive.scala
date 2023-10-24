@@ -3,9 +3,9 @@ package com.gowtham.service.CustomerService
 import com.gowtham.dynamodb.Database
 import com.gowtham.exception.CustomerError
 import com.gowtham.models.{Customer, Customers}
-import zio.ZIO
+import zio._
 
-class CustomerServiceLive extends CustomerService{
+case class CustomerServiceLive() extends CustomerService{
   override def createCustomer(customer: Customer): ZIO[Any, CustomerError.InvalidInput, Customers] = {
     Database.customerList.customers.find(customerDetails => customerDetails.customerId.equals(customer.customerId)) match {
       case None =>

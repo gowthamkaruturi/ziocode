@@ -21,7 +21,6 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.shared" %% "zio1" % "1.3.13",
       "com.softwaremill.sttp.tapir" %% "tapir-server" % V.tapir,
       "com.softwaremill.sttp.tapir" %% "tapir-zio1-http-server" % V.tapir,
-      "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % V.tapir,
       "com.softwaremill.sttp.tapir" %% "tapir-zio" % V.tapir,
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % V.tapir,
       "dev.zio" %% "zio" % V.zio,
@@ -32,6 +31,7 @@ lazy val root = (project in file("."))
       "io.d11" %% "zhttp" % "2.0.0-RC11",
       "dev.zio" %% "zio-interop-cats" % V.zioCats,
       "dev.zio" %% "zio-json" % "0.6.2",
+      "ch.qos.logback" %"logback-classic" %"1.4.7",
       "dev.zio" %% "zio-prelude" % V.zioPrelude
 
     ),
