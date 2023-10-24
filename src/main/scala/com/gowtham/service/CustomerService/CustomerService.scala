@@ -16,10 +16,10 @@ trait CustomerService {
 
 object CustomerService {
   lazy val live: ZLayer[Any, Nothing, CustomerService] = ZLayer {
-    ZIO.succeed( CustomerServiceLive)
+    ZIO.succeed( CustomerServiceLive())
   }
 
 
-}
+}    
 
 

@@ -23,6 +23,7 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.tapir" %% "tapir-zio1-http-server" % V.tapir,
       "com.softwaremill.sttp.tapir" %% "tapir-zio" % V.tapir,
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % V.tapir,
+      "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % V.tapir,
       "dev.zio" %% "zio" % V.zio,
       "dev.zio" %% "zio-config" % V.zioConfig,
       "dev.zio" %% "zio-config-typesafe" % V.zioConfig,
