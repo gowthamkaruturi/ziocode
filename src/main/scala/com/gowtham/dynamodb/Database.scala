@@ -12,8 +12,8 @@ object Database {
     Customer(customerId = 3, firstName = "abhiram", lastName = "vemuri", address = "1828 harrongton way leander tx", email = "test3@gmail.com")
   ))
   var OrderList: Orders = Orders(ListBuffer(
-    Order(orderId = 1, customerId = 3, products = List[1,2], totalPrice = 2.00),
-    Order(orderId = 2, customerId = 1, products = List[1], totalPrice = 1.00)
+    Order(orderId = 1, customerId = 3, products = List(1,2), totalPrice = 2.00),
+    Order(orderId = 2, customerId = 1, products = List(1), totalPrice = 1.00)
 
   ))
   var productList: Products = Products(ListBuffer(

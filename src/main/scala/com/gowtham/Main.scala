@@ -1,21 +1,22 @@
 package com.gowtham
 
+import com.gowtham.api.HttpServer
+import com.gowtham.app.App
 import com.gowtham.config.AppConfig
+import com.gowtham.service.CustomerService.CustomerService
 import zio._
-import zio.config._
-import zio.config.typesafe.TypesafeConfig
-import zio.console._
 
-object Main extends App {
-  override def run(args: List[String]): URIO[ZEnv, ExitCode] = {
 
-    
 
-    val program: ZIO[Has[AppConfig] with Console, Nothing, Unit] = for {
-      config <- ZIO.service[AppConfig]
-      _ <- println(s"http host: ${config.httpConfig.host}")
-    } yield ()
-
-    program.provideCustomLayer().exitCode
+object Main extends ZIOAppDefault {
+  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] = {
+    App.server.provide(
+      HttpServer.live,
+      CustomerService.live,
+      HttpServerSettings.default,
+      AppConfig.live,
+      ZLayer.Debug.tree
+    )
   }
+
 }
