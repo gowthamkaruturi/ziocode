@@ -3,6 +3,8 @@ package com.gowtham
 import com.gowtham.api.HttpServer
 import com.gowtham.app.App
 import com.gowtham.config.AppConfig
+import com.gowtham.dynamodb.DynamoDbLocal.dynamoDBExecutorLayer
+import com.gowtham.dynamodb.DynamoDbService
 import com.gowtham.service.CustomerService.CustomerService
 import zio._
 
@@ -13,9 +15,10 @@ object Main extends ZIOAppDefault {
     App.server.provide(
       HttpServer.live,
       CustomerService.live,
-      HttpServerSettings.default,
+      DynamoDbService.live,
+      dynamoDBExecutorLayer,
       AppConfig.live,
-      ZLayer.Debug.tree
+      //ZLayer.Debug.tree
     )
   }
 

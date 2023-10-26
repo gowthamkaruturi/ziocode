@@ -8,11 +8,11 @@ import zio.config.typesafe.TypesafeConfigSource
 import java.io.File
 
 final case class AppConfig(
-    dynamodb: Dynamodbconfig,
-    http: HttpConfig
+    dynamodb: Dynamodb,
+    http: Http
 )
-case class Dynamodbconfig(endpoint: String, region: String)
-final case class HttpConfig(host: String, port: Int)
+case class Dynamodb(endpoint: String, region: String)
+case class Http(host: String, port: Int)
 
 object AppConfig {
   val live: ZLayer[Any, ReadError[String], AppConfig] =

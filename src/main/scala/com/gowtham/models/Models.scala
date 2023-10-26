@@ -1,12 +1,9 @@
 package com.gowtham.models
 
-import io.circe.generic.auto._
-import sttp.tapir.json.circe._
 
 import scala.collection.mutable.ListBuffer
 import zio.json.{DeriveJsonCodec, DeriveJsonDecoder, DeriveJsonEncoder, JsonCodec, JsonDecoder, JsonEncoder}
 import sttp.tapir.Schema
-import io.circe.Encoder
 
 
 case class Customer(customerId: Int, firstName: String, lastName: String, address: String, email: String)
@@ -15,6 +12,13 @@ object Customer {
   implicit val schema: Schema[Customer] = Schema.derived
   implicit val decoder: JsonDecoder[Customer] = DeriveJsonDecoder.gen[Customer]
   implicit val encoder: JsonEncoder[Customer] = DeriveJsonEncoder.gen[Customer]
+  def apply(customerId: Int, firstName: String, lastName: String, address: String, email: String): Customer = {
+    Customer(customerId, firstName, lastName, address, email)
+  }
+
+  def from(customerId: Int, firstName: String, lastName: String, address: String, email: String): Customer = {
+    Customer(customerId, firstName, lastName, address, email)
+  }
 }
 
 case class Order(orderId: Int, customerId: Int, products: List[Int], totalPrice: Double)
@@ -23,6 +27,7 @@ object Order {
   implicit val schema: Schema[Order] = Schema.derived
   implicit val decoder: JsonDecoder[Order] = DeriveJsonDecoder.gen[Order]
   implicit val encoder: JsonEncoder[Order] = DeriveJsonEncoder.gen[Order]
+
 }
 
 case class Product(productId: Int, productName: String, price: Double)

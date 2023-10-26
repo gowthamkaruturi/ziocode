@@ -11,8 +11,8 @@ object App {
     for {
       config  <- ZIO.service[AppConfig]
       httpApp <- HttpServer.httpRoutes
-      start <-  Server.app(httpApp).withBinding(config.http.host, config.http.port).make.orDie
-      _ <- ZIO.logInfo(s"Server started on port: ${start}")
+      start <-  Server.app(httpApp).withBinding(config.http.host, config.http.port).startDefault
+    _ <- ZIO.logInfo(s"Server started on port: ${start}")
       _ <- ZIO.never
     } yield ()
   }
